@@ -67,14 +67,15 @@ def get_nvcc_cuda_version(cuda_dir: str) -> Version:
     return nvcc_cuda_version
 
 # Iterate over all GPUs on the current machine. Also you can modify this part to specify the architecture if you want to build for specific GPU architectures.
-compute_capabilities = set()
-device_count = torch.cuda.device_count()
-for i in range(device_count):
-    major, minor = torch.cuda.get_device_capability(i)
-    if major < 8:
-        warnings.warn(f"skipping GPU {i} with compute capability {major}.{minor}")
-        continue
-    compute_capabilities.add(f"{major}.{minor}")
+# compute_capabilities = set()
+# device_count = torch.cuda.device_count()
+# for i in range(device_count):
+#     major, minor = torch.cuda.get_device_capability(i)
+#     if major < 8:
+#         warnings.warn(f"skipping GPU {i} with compute capability {major}.{minor}")
+#         continue
+#     compute_capabilities.add(f"{major}.{minor}")
+compute_capabilities = ["8.0", "8.6", "8.9", "9.0", "12.0"]
 
 nvcc_cuda_version = get_nvcc_cuda_version(CUDA_HOME)
 if not compute_capabilities:
