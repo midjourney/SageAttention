@@ -75,7 +75,7 @@ def get_nvcc_cuda_version(cuda_dir: str) -> Version:
 #         warnings.warn(f"skipping GPU {i} with compute capability {major}.{minor}")
 #         continue
 #     compute_capabilities.add(f"{major}.{minor}")
-compute_capabilities = ["8.0", "8.6", "8.9", "9.0", "12.0"]
+compute_capabilities = ["8.0", "8.6", "8.9", "9.0"]
 
 nvcc_cuda_version = get_nvcc_cuda_version(CUDA_HOME)
 if not compute_capabilities:
